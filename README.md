@@ -2,100 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine Proposal 💖</title>
+  <title>Valentine 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Elegant romantic font for final message -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      height: 100vh;
+    * { box-sizing: border-box; }
+
+    html, body {
       margin: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #ff9a9e, #fad0c4);
       display: flex;
-      justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      font-family: 'Poppins', sans-serif;
+      justify-content: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 48px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+      position: relative;
       overflow: hidden;
     }
 
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      width: 320px;
+    .container.expanded {
+      width: 100%;
+      height: 100vh;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 img {
+  width: 250px;
+  height: auto;
+}
+
+    .question {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 20px auto 30px;
+      color: #333;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    .question.final {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: #c72c41;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       position: relative;
-    }
-
-    h1 {
-      color: #ff4d6d;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 30px;
+      height: 140px;
+      padding: 0 40px;
+      width: 100%;
     }
 
     button {
-      padding: 12px 24px;
+      padding: 16px 34px;
       font-size: 16px;
+      border-radius: 999px;
       border: none;
-      border-radius: 25px;
       cursor: pointer;
-      transition: 0.3s;
-      position: relative;
+      font-weight: 600;
+      transition: transform 0.3s ease;
     }
 
     #yesBtn {
-      background-color: #ff4d6d;
+      background: linear-gradient(135deg, #ff4d6d, #ff758f);
       color: white;
-      margin-right: 10px;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4);
     }
 
-    #yesBtn:hover {
-      transform: scale(1.1);
-    }
+    #yesBtn:hover { transform: scale(1.05); }
 
     #noBtn {
-      background-color: #ccc;
-      color: #333;
+      background: rgba(255, 255, 255, 0.85);
+      color: #555;
       position: absolute;
     }
 
-    #gif {
+    #gif, #finalImage {
       display: none;
-      margin-top: 20px;
+      margin-top: 24px;
       width: 100%;
-      border-radius: 15px;
+      height: 45vh;
+      object-fit: contain;
+      border-radius: 18px;
+    }
+
+    .footer {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #555;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 600px) {
+      .question.final {
+        font-size: 28px;
+      }
+      .actions { height: 180px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Sayali 💕</h1>
-    <p>Will you be my Valentine?</p>
+<div class="container">
+  <h1>
+    <img src="./20260122_175917-IMG_STYLE.jpg" alt="Cute Love Character">
+  </h1>
 
-    <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
-    <button id="noBtn" onmouseover="moveNo()">No 🙃</button>
-
-    <img id="gif" src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Love Gif">
+  <div class="question" id="questionText">
+    <strong>Sayali 🦉 will you be my Valentine?</strong> ❤️
   </div>
 
-  <script>
-    const noBtn = document.getElementById("noBtn");
+  <div class="actions" id="actionsBox">
+    <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
+    <button id="noBtn" onmouseover="moveNo()">No</button>
+  </div>
 
-    function moveNo() {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    }
+  <img
+    id="gif"
+    src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzRsY2luY2toM2IwaG10NjZudXR5M2Q2aTgxcWtmYnJ2NXJsZHY1aCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/nSQ09bxw13UHMApANb/giphy.gif"
+    alt="Celebration"
+  >
 
-    function yesClicked() {
-      document.querySelector("p").innerText = "Yayyy!!! 💘 I knew it 😍";
-      document.getElementById("gif").style.display = "block";
-      noBtn.style.display = "none";
-    }
-  </script>
+  <img
+    id="finalImage"
+    src="./Image Background Removed.png"
+    alt="Our Moment"
+  >
+
+  <div class="footer">'No' looks a bit shy 😈 ✨</div>
+</div>
+
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const actionsBox = document.getElementById("actionsBox");
+  const question = document.getElementById("questionText");
+
+  // Place NO button initially at bottom-right of actions area
+  window.onload = () => {
+    const box = actionsBox.getBoundingClientRect();
+    const btn = noBtn.getBoundingClientRect();
+    noBtn.style.left = `${box.width - btn.width - 10}px`;
+    noBtn.style.top = `${box.height - btn.height - 10}px`;
+  };
+
+  function moveNo() {
+    const box = actionsBox.getBoundingClientRect();
+    const btn = noBtn.getBoundingClientRect();
+    const padding = 10;
+
+    const maxX = box.width - btn.width - padding;
+    const maxY = box.height - btn.height - padding;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = `${Math.max(padding, x)}px`;
+    noBtn.style.top = `${Math.max(padding, y)}px`;
+  }
+
+  function yesClicked() {
+  document.querySelector(".container").classList.add("expanded");
+
+  // hide the top image
+  document.querySelector("h1 img").style.display = "none";
+
+  // hide both buttons
+  document.getElementById("actionsBox").style.display = "none";
+
+  // show final message
+  question.classList.add("final");
+  question.innerText =
+    "🎉 Yayyyy! 💕🦉";
+
+  document.getElementById("gif").style.display = "block";
+  document.getElementById("finalImage").style.display = "block";
+}
+</script>
 
 </body>
 </html>
