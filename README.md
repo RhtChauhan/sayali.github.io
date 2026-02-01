@@ -1,8 +1,6 @@
-# sayali.github.io
-
 <!DOCTYPE html>
 <html lang="en">
-<head>s
+<head>
   <meta charset="UTF-8">
   <title>Valentine Proposal 💖</title>
   <style>
