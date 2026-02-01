@@ -50,9 +50,9 @@
     }
 
     h1 img {
-  width: 250px;
-  height: auto;
-}
+      width: 250px;
+      height: auto;
+    }
 
     .question {
       font-size: 24px;
@@ -135,7 +135,7 @@
 
 <div class="container">
   <h1>
-    <img src="./20260122_175917-IMG_STYLE.jpg" alt="Cute Love Character">
+    <img src="./HTML/20260122_175917-IMG_STYLE.jpg" alt="Cute Love Character">
   </h1>
 
   <div class="question" id="questionText">
@@ -155,7 +155,7 @@
 
   <img
     id="finalImage"
-    src="./Image Background Removed.png"
+    src="./HTML/Image Background Removed.png"
     alt="Our Moment"
   >
 
@@ -167,7 +167,6 @@
   const actionsBox = document.getElementById("actionsBox");
   const question = document.getElementById("questionText");
 
-  // Place NO button initially at bottom-right of actions area
   window.onload = () => {
     const box = actionsBox.getBoundingClientRect();
     const btn = noBtn.getBoundingClientRect();
@@ -183,30 +182,21 @@
     const maxX = box.width - btn.width - padding;
     const maxY = box.height - btn.height - padding;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-
-    noBtn.style.left = `${Math.max(padding, x)}px`;
-    noBtn.style.top = `${Math.max(padding, y)}px`;
+    noBtn.style.left = `${Math.max(padding, Math.random() * maxX)}px`;
+    noBtn.style.top = `${Math.max(padding, Math.random() * maxY)}px`;
   }
 
   function yesClicked() {
-  document.querySelector(".container").classList.add("expanded");
+    document.querySelector(".container").classList.add("expanded");
+    document.querySelector("h1 img").style.display = "none";
+    document.getElementById("actionsBox").style.display = "none";
 
-  // hide the top image
-  document.querySelector("h1 img").style.display = "none";
+    question.classList.add("final");
+    question.innerText = "🎉 Yayyyy! 💕🦉";
 
-  // hide both buttons
-  document.getElementById("actionsBox").style.display = "none";
-
-  // show final message
-  question.classList.add("final");
-  question.innerText =
-    "🎉 Yayyyy! 💕🦉";
-
-  document.getElementById("gif").style.display = "block";
-  document.getElementById("finalImage").style.display = "block";
-}
+    document.getElementById("gif").style.display = "block";
+    document.getElementById("finalImage").style.display = "block";
+  }
 </script>
 
 </body>
